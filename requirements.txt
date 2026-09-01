@@ -1,0 +1,42 @@
+# Web framework
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+
+# Database
+sqlmodel==0.0.19
+
+# Config
+python-dotenv==1.0.1
+pydantic-settings==2.3.4
+
+# AI / Agents
+langgraph==0.1.19
+langchain==0.2.16
+langchain-groq==0.1.9
+langchain-community==0.2.16
+langsmith==0.1.98
+
+
+# Web search
+tavily-python==0.3.3
+
+# Crawling
+playwright==1.45.0
+beautifulsoup4==4.12.3
+lxml==5.2.2
+
+# Email
+sendgrid==6.11.0
+
+# Scheduling
+apscheduler==3.10.4
+
+# HTTP client
+httpx==0.27.0
+
+# CLI output
+rich==13.7.1
+
+# Testing
+pytest==8.2.2
+pytest-asyncio==0.23.7
