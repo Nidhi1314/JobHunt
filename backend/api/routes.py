@@ -87,3 +87,23 @@ def get_pipeline_status(
         select(RunLog).order_by(RunLog.started_at.desc()).limit(limit)
     ).all()
     return logs
+
+@router.post("/pipeline/run-and-email")
+async def trigger_pipeline_with_email():
+    """Manually trigger full pipeline + send email."""
+    from backend.graph.pipeline import run_pipeline
+    from backend.email_sender.gmail_sender import send_job_alert_async
+
+    result = await run_pipeline()
+    new_jobs = result.get("new_jobs", [])
+    email_sent = False
+
+    if new_jobs:
+        email_sent = await send_job_alert_async(new_jobs)
+
+    return {
+        "status": "complete",
+        "jobs_crawled": result.get("jobs_crawled", 0),
+        "jobs_new": result.get("jobs_new", 0),
+        "email_sent": email_sent,
+    }
