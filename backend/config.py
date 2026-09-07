@@ -10,9 +10,11 @@ class Settings(BaseSettings):
     tavily_api_key: str = ""
 
     # Email
-    sendgrid_api_key: str = ""
-    sendgrid_from_email: str = ""
+     # Email (Gmail SMTP)
+    gmail_user: str = ""
+    gmail_app_password: str = ""
     alert_to_email: str = ""
+
 
     # Scheduler
     pipeline_schedule_hour: int = 8
